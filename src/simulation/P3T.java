@@ -1,7 +1,7 @@
 package simulation;
 
 //3. 잃어버린 강아지
-public class P3 {
+public class P3T {
     static int[] dx = {0, 1, 0, -1}; //시계방향
     static int[] dy = {1, 0, -1, 0};
 
@@ -61,7 +61,7 @@ public class P3 {
     }
 
     public static void main(String[] args){
-        P3 T = new P3();
+        P3T T = new P3T();
         int[][] arr1 = {{0, 0, 0, 0, 0, 0, 1, 0, 0, 0},
                 {0, 0, 0, 0, 1, 0, 0, 0, 0, 0},
                 {0, 0, 0, 1, 0, 0, 0, 1, 0, 0},
