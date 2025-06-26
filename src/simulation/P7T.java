@@ -2,6 +2,7 @@ package simulation;
 
 import java.util.Arrays;
 
+//비밀번호
 public class P7T {
     static int[] dx = {-1, -1, 0, 1, 1, 1, 0, -1};
     static int[] dy = {0, 1, 1, 1, 0, -1, -1, -1};
