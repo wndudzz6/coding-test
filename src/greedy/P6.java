@@ -1,9 +1,49 @@
 package greedy;
 
-//6. 최대인원수
+import java.util.Arrays;
+import java.util.Deque;
+import java.util.LinkedList;
+
+//6. 최대인원수 ~ 해법 듣고 재도전
+//잘 안됨
 public class P6 {
-    public int solution(int n, int[][] trans, int[][] bookings){
+    public int solution(int n, int[][] trains, int[][] bookings){
         int answer=0;
+        Arrays.sort(bookings, (a, b)->a[0]==b[0] ? a[1]-b[1] : a[0]-b[0]);
+        Arrays.sort(trains, (a, b)->a[0]-b[0]);
+        int[] sum = new int[n+1]; //0~n 1based
+        for(int i = 0; i < trains.length; i++){
+            int s = trains[i][0];
+            int e = trains[i][1];
+            int k = trains[i][2];
+            sum[s] +=k;
+            sum[e] -=k;
+        }
+        for(int i = 1; i <= n; i++) sum[i] += sum[i-1];
+        int idx = 0; //bookings 배열 인덱스
+        Deque<Integer> dq = new LinkedList<>();
+        for(int i =1; i <= n; i++) {
+
+            //도착해서 내리는 어린이
+            int dqSize = dq.size();
+            for(int j = 0; j<dqSize; j++){
+                int dest = dq.pollFirst();
+                if(dest == i){
+                    answer++;
+                    sum[i]++;
+                }else dq.offerLast(dest);
+            }
+
+            //이번 역에서 탈 수 있는 사람들 넣기
+            while(idx < bookings.length && bookings[idx][0] == i){
+                int dest = bookings[idx][1];
+
+                if(sum[i]>0){
+                    sum[i]--;
+                    dq.offerLast(dest);
+                }idx++;
+            }
+        }
 
         return answer;
     }

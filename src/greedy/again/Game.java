@@ -21,7 +21,7 @@ public class Game {
             return this.power - o.power;
         }
     }
-    public int[] solution(String[] students){
+    public int[]solution(String[] students){
         int n = students.length;
         int[] answer = new int[n];
         ArrayList<Student> list = new ArrayList<>();
