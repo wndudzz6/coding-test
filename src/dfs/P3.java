@@ -1,7 +1,6 @@
 package dfs;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class P3 {
     static int answer, n;
