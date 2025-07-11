@@ -5,6 +5,7 @@ import java.util.*;
 //역으로 조회하는 식으로 P1이랑 비슷하게 짰다가 틀림
 //최소 환승 경로
 //GPT보면서 다시 짬
+//T 코드가 훨씬 낫다.
 public class P2 {
     public int solution(int[][] routes, int s, int e){
         int n = routes.length;
