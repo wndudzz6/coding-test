@@ -5,20 +5,19 @@ import java.util.*;
 public class P2073 {
 
     static int solution(int d, int p, int[] L, int[] C){
-        int[] dy = new int[d+1];
-        //dy[i] : 길이i만큼 모았을 때 최대 용량
-
-        //유한 냅색류 문제
-        dy[0] = Integer.MAX_VALUE;
+        int[]dp = new int[d+1];
+        //dp[i] i만큼의 거리가 될 때 최대 용량 저장/누적
+        //dp 초기화?
+        dp[0] = Integer.MAX_VALUE;
         for(int i = 0; i<p; i++){
             int l = L[i];
             int c = C[i];
             for(int j = d; j>=l; j--){
-                if(dy[j-l]==0) continue;
-                dy[j] = Math.max(dy[j], Math.min(dy[j-l], c));
+                if(dp[j-l]==0) continue;
+                dp[j] = Math.max(dp[j], Math.min(dp[j-l], c));
             }
         }
-        return dy[d];
+        return dp[d];
     }
 
     public static void main(String[] args) {

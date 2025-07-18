@@ -5,13 +5,15 @@ import java.util.Scanner;
 public class P2579 {
 
     static int solution(int n, int[] stairs){
-        int[] dy = new int[n+1];
-        dy[1] = stairs[1];
-        if(n>1) dy[2] = stairs[1]+stairs[2];
-        for(int i = 3; i<=n; i++){
-            dy[i] = Math.max(dy[i-2]+stairs[i], dy[i-3]+stairs[i-1]+stairs[i]);
+        int[] dp = new int[n+1];
+        dp[1] = stairs[1];
+        if(n>1) {
+            dp[2] = stairs[2]+stairs[1];
+            for(int i = 3; i<=n; i++){
+                dp[i] = Math.max(dp[i-2]+stairs[i], dp[i-3]+stairs[i-1]+stairs[i]);
+            }
         }
-        return dy[n];
+        return dp[n];
     }
 
     public static void main(String[] args) {
