@@ -1,4 +1,4 @@
-package boj.hyndaeatuo.graph.lecture;
+package boj.hyndaeatuo.graph;
 
 import java.util.Scanner;
 

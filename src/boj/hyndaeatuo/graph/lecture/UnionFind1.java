@@ -1,6 +1,5 @@
 package boj.hyndaeatuo.graph.lecture;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 //친구인가?
