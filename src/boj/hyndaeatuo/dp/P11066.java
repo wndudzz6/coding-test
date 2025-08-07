@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 //파일 합치기
 public class P11066 {
-
     static int solution(int k, int[] chapter) {
         int[] prefix = new int[k+1]; //총합을 저장하는 배열
         for (int i = 1; i <= k; i++) prefix[i] = prefix[i-1] + chapter[i-1];
