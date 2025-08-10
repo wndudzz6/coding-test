@@ -1,4 +1,4 @@
-package boj.hyndaeatuo.graph;
+package boj.hyndaeatuo.greedy;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -7,15 +7,16 @@ import java.util.Scanner;
 public class P11066 {
 
     static int solution(int n, int[] prefix){
-        int[][] dp = new int[n+1][n+1]; //i~j까지의 범위 최소 비용
+        int[][] dp = new int[n+1][n+1]; //1based
         for(int[] x : dp) Arrays.fill(x, Integer.MAX_VALUE);
-        for(int i = 1; i<=n; i++) dp[i][i] = 0; //자기자신 합치기는 0
+        for(int i = 1; i<=n; i++) dp[i][i] = 0; //자기자신 합치는 비용은 0
 
         for(int len = 2; len<=n; len++){
-            for(int i = 1; len+i-1 <=n; i++){
-                int j = len+i-1;
-                for(int mid = i; mid<j; mid++){
-                    dp[i][j] = Math.min(dp[i][j], dp[i][mid]+dp[mid+1][j]+prefix[j]-prefix[i-1]);
+            for(int i = 1; i+len-1<=n ; i++){
+                int j = i+len-1;
+                for(int mid = i; mid < j; mid++){
+                    dp[i][j] = Math.min(dp[i][j], dp[i][mid]+dp[mid+1][j] +
+                            prefix[j]-prefix[i-1]);
                 }
             }
         }

@@ -1,4 +1,4 @@
-package boj.hyndaeatuo.binary;
+package boj.hyndaeatuo.dp;
 
 import java.util.Scanner;
 
