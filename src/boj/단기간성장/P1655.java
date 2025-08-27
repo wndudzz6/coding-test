@@ -1,4 +1,4 @@
-package boj.short_term_growth;
+package boj.단기간성장;
 
 import java.util.ArrayList;
 import java.util.Scanner;
