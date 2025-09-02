@@ -10,42 +10,44 @@ public class P16947_서울지하철2호선 {
     static int[] dist;
 
     static boolean dfs(int cur, int prev){
-        visited[cur] = true;
-        for(int next : graph[cur]){
-            if(!visited[next]){
-                if(dfs(next, cur)){
-                    if(!found) isCycle[cur] = true;
-                    if(cur == startNode) found = true;
-                    return true;
-                }
-            }else if(prev != next){
-                isCycle[cur] = true;
-                startNode = next;
-                return true;
-            }
-        }
-        return false;
+       visited[cur] = true;
+       for(int next : graph[cur]){
+           if(!visited[next]){
+               if(dfs(next, cur)){
+                   if(!found) isCycle[cur] = true;
+                   if(startNode == cur) found = true;
+                   return true;
+               }
+           }else if(prev != next){
+               isCycle[cur] = true;
+               startNode = next;
+               return true;
+           }
+       }
+       return false;
     }
 
     static void bfs(){
-        Queue<Integer> q = new LinkedList<>();
+        Queue<Integer> Q = new LinkedList<>();
         for(int i = 1; i<=n; i++){
-            if(isCycle[i]){
+            if(isCycle[i]) {
                 dist[i] = 0;
-                q.offer(i);
+                Q.offer(i);
             }
         }
 
-        while(!q.isEmpty()){
-            int cur = q.poll();
+        while(!Q.isEmpty()){
+            int cur = Q.poll();
 
             for(int next : graph[cur]){
                 if(dist[next] == -1){
                     dist[next] = dist[cur]+1;
-                    q.offer(next);
+                    Q.offer(next);
                 }
             }
         }
+
+
     }
 
     public static void main(String[] args) {
