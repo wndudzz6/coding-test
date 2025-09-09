@@ -1,4 +1,4 @@
-package boj.september.graph;
+package boj.august.graph;
 
 import java.util.ArrayDeque;
 import java.util.Arrays;

@@ -1,4 +1,4 @@
-package boj.september.dp;
+package boj.august.dp;
 
 import java.util.Scanner;
 

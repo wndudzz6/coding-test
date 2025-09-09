@@ -1,4 +1,4 @@
-package boj.september.graph;
+package boj.setember.graph;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -8,34 +8,32 @@ import java.util.Scanner;
 public class P2252_줄세우기 {
 
     static int[] solution(int n, ArrayList<ArrayList<Integer>> graph, int[] indegree){
-        Queue<Integer> Q = new LinkedList<>();
+        Queue<Integer> q = new LinkedList<>();
         int[] answer = new int[n];
+
         for(int i = 1; i<=n; i++){
-            if(indegree[i] == 0){
-                Q.offer(i);
-            }
+            if(indegree[i] == 0) q.offer(i);
         }
 
         int idx = 0;
-        while(!Q.isEmpty()){
-            int cur = Q.poll();
+        while(!q.isEmpty()){
+            int cur = q.poll();
             answer[idx++] = cur;
 
-            for(Integer x : graph.get(cur)){
-                indegree[x]--;
-                if(indegree[x] == 0) Q.offer(x);
+            for(int next : graph.get(cur)){
+                if(--indegree[next] == 0) q.offer(next);
             }
         }
-
         return answer;
     }
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+
+        ArrayList<ArrayList<Integer>> graph = new ArrayList<>();
         int n = sc.nextInt();
         int m = sc.nextInt();
         int[] indegree = new int[n+1];
-        ArrayList<ArrayList<Integer>> graph = new ArrayList<>();
 
         for(int i = 0; i<=n; i++) graph.add(new ArrayList<>());
 
@@ -43,12 +41,11 @@ public class P2252_줄세우기 {
             int a = sc.nextInt();
             int b = sc.nextInt();
 
-            graph.get(a).add(b); //a->b
+            graph.get(a).add(b);
             indegree[b]++;
         }
-        sc.close();
 
-        int[] answer = solution(n, graph, indegree);
-        for(int x : answer) System.out.print(x+" ");
+        int[] order = solution(n, graph, indegree);
+        for(int x : order) System.out.print(x+" ");
     }
 }

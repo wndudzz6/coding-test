@@ -1,4 +1,4 @@
-package boj.september.datastructure;
+package boj.august.datastructure;
 
 import java.util.HashMap;
 import java.util.Map;

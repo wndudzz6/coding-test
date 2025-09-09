@@ -1,4 +1,4 @@
-package boj.september.greedy;
+package boj.august.greedy;
 
 import java.util.ArrayList;
 import java.util.Collections;

@@ -1,4 +1,4 @@
-package boj.september.graph;
+package boj.august.graph;
 
 import java.util.Arrays;
 import java.util.LinkedList;
