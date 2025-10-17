@@ -34,13 +34,6 @@ public class 문자열압축 {
         return answer;
     }
 
-    private static int digits(int x) {
-        // 1~9:1자리, 10~99:2자리 ...
-        int d = 0;
-        while (x > 0) { d++; x /= 10; }
-        return d;
-    }
-
     public static void main(String[] args) {
         System.out.println(solution("aabbaccc")); //7
         System.out.println(solution("ababcdcdababcdcd")); //9
