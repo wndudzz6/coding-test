@@ -15,6 +15,7 @@ public class P1700 {
         }
 
         int[] tab = new int[n];
+        boolean[] plugged = new boolean[101]; //전기 용품 최대 개수 100
         int size = 0; // 현재 꽂힌 개수
         int cnt = 0;  // 뽑은 횟수
 
@@ -22,30 +23,28 @@ public class P1700 {
             int cur = order[i];
             map.get(cur).poll(); // 현재 사용 시점 제거
 
-            boolean already = false;
-            for (int t = 0; t < size; t++) {
-                if (tab[t] == cur) {
-                    already = true;
-                    break;
-                }
-            }
-            if (already) continue;
+            if(plugged[cur]) continue;
 
             if (size < n) {
                 tab[size++] = cur; // 빈 자리에 꽂기
+                plugged[cur] = true;
             } else {
                 // 뺄 물건 찾기
                 int idxToRemove = -1;
                 int farthest = -1; // 다음 사용 시점
                 for (int t = 0; t < n; t++) {
                     Queue<Integer> q = map.get(tab[t]);
+                    //nextUse : 이번 슬롯의 개별 측정값
                     int nextUse = q.isEmpty() ? Integer.MAX_VALUE : q.peek();
                     if (nextUse > farthest) {
-                        farthest = nextUse;
+                        farthest = nextUse; //지금까지 본 최댓값 누적 기록
                         idxToRemove = t;
                     }
                 }
+                int removed = tab[idxToRemove];
                 tab[idxToRemove] = cur;
+                plugged[removed] = false;
+                plugged[cur] = true;
                 cnt++;
             }
         }
